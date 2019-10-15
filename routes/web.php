@@ -21,3 +21,4 @@ $router->get('/home/{code}', function () use ($router) {
     var_dump($router);
     echo "Home Code";
 });
+$router->get('/contact', 'PageController@getContact');
