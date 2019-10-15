@@ -11,9 +11,9 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
+// $router->get('/', function () use ($router) {
+//     return $router->app->version();
+// });
 $router->get('/home', function () use ($router) {
     echo "Home";
 });
@@ -21,4 +21,6 @@ $router->get('/home/{code}', function () use ($router) {
     var_dump($router);
     echo "Home Code";
 });
+$router->get('/', 'PageController@getHome');
 $router->get('/contact', 'PageController@getContact');
+$router->get('/directory', 'PageController@getDirectory');
