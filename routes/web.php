@@ -23,6 +23,8 @@ $router->get('/home/{code}', function () use ($router) {
 });
 $router->get('/', 'PageController@getHome');
 $router->get('/contact', 'PageController@getContact');
-$router->post('/contact', 'ContactController@store');
+$router->post('/contact', [
+    'as' => 'contact', 'uses' => 'ContactController@store'
+]);
 $router->get('/directory', 'PageController@getDirectory');
 $router->get('/profile/{id}', 'ProfileController@getDirectory');
