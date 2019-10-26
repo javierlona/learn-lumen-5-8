@@ -24,3 +24,4 @@ $router->get('/home/{code}', function () use ($router) {
 $router->get('/', 'PageController@getHome');
 $router->get('/contact', 'PageController@getContact');
 $router->get('/directory', 'PageController@getDirectory');
+$router->get('/profile/{id}', 'ProfileController@getDirectory');

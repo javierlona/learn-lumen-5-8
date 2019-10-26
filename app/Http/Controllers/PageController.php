@@ -28,7 +28,6 @@ class PageController extends Controller
     public function getHome(Request $request)
     {
         echo "Home in Page Controller";
-        // return $router->app->version();
         var_dump($request);
     }
 }
