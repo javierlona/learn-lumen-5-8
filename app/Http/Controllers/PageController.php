@@ -19,7 +19,7 @@ class PageController extends Controller
     //
     public function getContact()
     {
-        echo "Contact in Page Controller";
+        return view('contact.index');
     }
     public function getDirectory()
     {
