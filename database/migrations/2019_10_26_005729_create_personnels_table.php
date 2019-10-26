@@ -17,8 +17,10 @@ class CreatePersonnelsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name_first');
             $table->string('name_last');
-            $table->string('position');
-            $table->integer('room_number');
+            $table->string('email')->unique();
+            $table->string('phone');
+            $table->string('job_title');
+            $table->integer('office_number');
             $table->timestamps();
         });
     }
