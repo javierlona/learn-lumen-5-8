@@ -22,9 +22,11 @@ $router->get('/home/{code}', function () use ($router) {
     echo "Home Code";
 });
 $router->get('/', 'PageController@getHome');
-$router->get('/contact', 'PageController@getContact');
 $router->post('/contact', [
     'as' => 'contact', 'uses' => 'ContactController@store'
+]);
+$router->get('/contact', [
+    'as' => 'contact', 'uses' => 'PageController@getContact'
 ]);
 $router->get('/directory', 'PageController@getDirectory');
 $router->get('/profile/{id}', 'ProfileController@getDirectory');

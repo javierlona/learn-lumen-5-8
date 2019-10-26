@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Validator;
 
 class ContactController extends Controller
 {
@@ -18,7 +19,19 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {
-      echo "In the Store Function";
+      $rules = [
+          'name' => 'required',
+          'email' => 'required|email',
+          'message' => 'required'
+      ];
+
+      $validator = Validator::make($request->all(), $rules);
+
+      if($validator->fails()) {
+        return redirect()->route('contact'); 
+      }
+
+      echo "Passed Validation.";
       var_dump($request->all());
     }
 }
