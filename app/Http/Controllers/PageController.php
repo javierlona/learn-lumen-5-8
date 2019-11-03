@@ -23,7 +23,7 @@ class PageController extends Controller
     }
     public function getDirectory()
     {
-        echo "Directory in Page Controller";
+        return view('directory.index');
     }
     public function getHome(Request $request)
     {
