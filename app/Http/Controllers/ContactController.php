@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ContactForm;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -34,6 +35,14 @@ class ContactController extends Controller
       }
 
       echo "Passed Validation.";
-      var_dump($request->all());
+      // var_dump($request->all());
+
+      $contact = ContactForm::create($request->input());
+      // var_dump($contact);
+
+      // $contact->name = $request->all();
+
+      // $contact->save();
+      // echo "Saved To DB.";
     }
 }
