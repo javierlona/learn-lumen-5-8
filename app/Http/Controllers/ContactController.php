@@ -28,7 +28,9 @@ class ContactController extends Controller
       $validator = Validator::make($request->all(), $rules);
 
       if($validator->fails()) {
-        return redirect()->route('contact'); 
+        // back does not work
+        // sessions are not available 'stateless'
+        return redirect()->route('contact');
       }
 
       echo "Passed Validation.";
