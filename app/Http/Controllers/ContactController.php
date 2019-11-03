@@ -37,10 +37,23 @@ class ContactController extends Controller
       echo "Passed Validation.";
       // var_dump($request->all());
 
+      /*
+      * Mass assignment method to save information
+      *
+      */
+
       $contact = ContactForm::create($request->input());
+      echo "Saved To DB.";
       // var_dump($contact);
 
-      // $contact->name = $request->all();
+      /*
+      * Another method to save information
+      *
+      */
+
+      // $contact->name = $request->input('name');
+      // $contact->email = $request->input('email');
+      // $contact->message = $request->input('message');
 
       // $contact->save();
       // echo "Saved To DB.";
