@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+// use App\Personnel;
 
 class PageController extends Controller
 {
@@ -24,10 +25,20 @@ class PageController extends Controller
     }
     public function getDirectory()
     {
-        $people = DB::table('personnels')->get();
-        var_dump($people);
-        die;
-        return view('directory.index');
+        /*
+        * Method One
+        *
+        */
+        $data['people'] = DB::table('personnels')->get();
+        // var_dump($data['people']);
+        
+        // $people = Personnel::all();
+        // var_dump($people);
+        // foreach ($people as $flight) {
+        //     echo $flight->job_title;
+        // }
+        // die;
+        return view('directory.index', $data);
     }
     public function getHome(Request $request)
     {
