@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
 {
@@ -23,6 +24,9 @@ class PageController extends Controller
     }
     public function getDirectory()
     {
+        $people = DB::table('personnels')->get();
+        var_dump($people);
+        die;
         return view('directory.index');
     }
     public function getHome(Request $request)
