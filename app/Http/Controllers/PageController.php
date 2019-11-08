@@ -42,7 +42,9 @@ class PageController extends Controller
     }
     public function getHome(Request $request)
     {
-        echo "Home in Page Controller";
-        var_dump($request);
+        // echo "Home in Page Controller";
+        // var_dump($request);
+
+        return view('content.index');
     }
 }
