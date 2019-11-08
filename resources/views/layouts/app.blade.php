@@ -17,13 +17,13 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home</a>
+          <a class="nav-link" href="{{ url('/') }}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Directory</a>
+          <a class="nav-link" href="{{ url('/directory') }}">Directory</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contact Us</a>
+          <a class="nav-link" href="{{ route('contact') }}">Contact Us</a>
         </li>
       </ul>
     </div>
