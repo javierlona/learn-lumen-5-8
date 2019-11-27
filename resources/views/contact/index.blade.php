@@ -5,7 +5,7 @@
 @endsection('title')
 
 @section('content')
-  <form method="POST" action="{{ route('contact') }}">
+  <form method="POST" action="{{ route('contact') }}" class="mt-4">
     <div class="form-group row">
       <label for="name" class="col-sm-2 col-form-label">Name</label>
       <div class="col-sm-10">
