@@ -29,4 +29,4 @@ $router->get('/contact', [
     'as' => 'contact', 'uses' => 'PageController@getContact'
 ]);
 $router->get('/directory', 'PageController@getDirectory');
-$router->get('/profile/{id}', 'ProfileController@getDirectory');
+$router->get('/profile/{id}', 'PersonnelController@show');
