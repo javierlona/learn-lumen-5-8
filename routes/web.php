@@ -29,4 +29,6 @@ $router->get('/contact', [
     'as' => 'contact', 'uses' => 'PageController@getContact'
 ]);
 $router->get('/directory', 'PageController@getDirectory');
-$router->get('/profile/{id}', 'PersonnelController@show');
+$router->get('/profile/{id}', [
+    'as' => 'profile.index', 'uses' => 'PersonnelController@show'
+]);

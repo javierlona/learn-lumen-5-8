@@ -32,7 +32,7 @@
         <td> {{ $person->phone }} </td>
         <td> {{ $person->job_title }} </td>
         <td> {{ $person->office_number }} </td>
-        <td> Edit, Delete </td>
+      <td><a class="btn btn-warning" href="{{ route('profile.index', ['id' => $person->id]) }}" role="button">Edit</a>, Delete </td>
       </tr>
       @endforeach
     </tbody>
