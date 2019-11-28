@@ -10,7 +10,7 @@
     <input type="text" class="form-control" id="searchPerson" aria-describedby="searchHelp">
     <small id="searchHelp" class="form-text text-muted">Search by name or email</small>
   </div>
-  <button type="button" class="btn btn-primary mt-3">Add Person</button>
+  <a class="btn btn-primary mt-3" href="{{ route('profile.add') }}" role="button">Add Person</a>
   <table class="table mt-4">
     <thead>
       <tr>

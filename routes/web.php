@@ -29,10 +29,18 @@ $router->get('/contact', [
     'as' => 'contact', 'uses' => 'PageController@getContact'
 ]);
 $router->get('/directory', 'PageController@getDirectory');
+$router->get('/profile/add', function() {
+    return view('profile.add');
+});
+$router->post('/profile/add', [
+    'as' => 'profile.add', 'uses' => 'PersonnelController@store'
+]);
 $router->get('/profile/{id}', [
     'as' => 'profile.index', 'uses' => 'PersonnelController@show'
 ]);
 $router->post('/profile/{id}', [
     'as' => 'profile.update', 'uses' => 'PersonnelController@update'
 ]);
-// $router->post('/profile/{id}', 'PersonnelController@update');
+// $router->get('/profile/add', [
+//     'as' => 'profile.add', 'uses' => 'PersonnelController@store'
+// ]);
