@@ -20,22 +20,9 @@ class PersonnelController extends Controller
 
     public function show($id)
     {
-      echo $id;
+      $person = Personnel::where('id', $id)->firstOrFail();
 
-      $data = ['id' => $id ];
-
-      $rules = [
-          'id' => 'required|numeric',
-      ];
-
-      $validator = Validator::make($data, $rules);
-
-      if($validator->fails()) {
-        // back does not work
-        // sessions are not available 'stateless'
-        return redirect()->url('/directory');
-      }
-
-      echo "\nPassed Validation.";
+      // dd($person);
+      return view('profile.index', $person);
     }
 }

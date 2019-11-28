@@ -27,11 +27,11 @@
       @foreach ($people as $person)
       <tr>
         <td> {{ $person->name_first }} </td>
-        <td> {{  $person->name_last }} </td>
-        <td> {{  $person->email }} </td>
-        <td> {{  $person->phone }} </td>
-        <td> {{  $person->job_title }} </td>
-        <td> {{  $person->office_number }} </td>
+        <td> {{ $person->name_last }} </td>
+        <td> {{ $person->email }} </td>
+        <td> {{ $person->phone }} </td>
+        <td> {{ $person->job_title }} </td>
+        <td> {{ $person->office_number }} </td>
         <td> Edit, Delete </td>
       </tr>
       @endforeach
