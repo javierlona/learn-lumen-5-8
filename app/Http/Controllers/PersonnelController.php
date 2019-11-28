@@ -25,4 +25,9 @@ class PersonnelController extends Controller
       // dd($person);
       return view('profile.index', $person);
     }
+
+    public function update(Request $request, Personnel $personnel)
+    {
+
+    }
 }
