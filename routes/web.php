@@ -32,6 +32,7 @@ $router->get('/directory', 'PageController@getDirectory');
 $router->get('/profile/{id}', [
     'as' => 'profile.index', 'uses' => 'PersonnelController@show'
 ]);
-$router->put('/profile/{id}', [
+$router->post('/profile/{id}', [
     'as' => 'profile.update', 'uses' => 'PersonnelController@update'
 ]);
+// $router->post('/profile/{id}', 'PersonnelController@update');
