@@ -83,6 +83,21 @@ class PersonnelController extends Controller
 
     public function search($q)
     {
-      return response()->json($q, 200);
+      $valid['query'] = $q;
+      $validator = Validator::make($valid, [
+        'query' => 'required|alpha_num',
+      ]);
+
+      if ($validator->fails()) {
+        return response()->json('Failed', 200);
+      }
+
+      $data = Personnel::where('name_first', 'like', '%' . $q . '%')
+              ->orWhere('name_last', 'like', '%' . $q . '%')
+              ->orWhere('email', 'like', '%' . $q . '%')
+              ->take(10)
+              ->get();
+
+      return response()->json($data, 200);
     }
 }

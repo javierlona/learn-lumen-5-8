@@ -9,6 +9,9 @@
     <label for="searchPerson">Search For Person</label>
     <input type="text" class="form-control" name="search" id="searchPerson" aria-describedby="searchHelp">
     <small id="searchHelp" class="form-text text-muted">Search by name or email</small>
+    <div class="list-group" id="suggestions">
+      {{-- <a href="#" class="list-group-item list-group-item-action list-group-item-info">A simple info list group item</a> --}}
+    </div>
   </div>
   <a class="btn btn-primary mt-3" href="{{ route('profile.add') }}" role="button">Add Person</a>
   <table class="table mt-4">
@@ -49,14 +52,33 @@
     const profileQuery = document.querySelector('#searchPerson');
     const resultDiv = document.querySelector('#suggestions');
     console.log(profileQuery);
+    console.log(resultDiv);
+
+    function show_suggestions(suggestions) {
+      console.log("The suggestions");
+      console.log(suggestions);
+      let output = '';
+
+      for(key in suggestions) {
+        if(suggestions.hasOwnProperty(key)) {
+          // console.log(suggestions[key].name_first);
+          
+          output += `<a href="#" class="list-group-item list-group-item-action list-group-item-info">${suggestions[key].name_first}</a>`;
+        }
+      }
+      console.log(output);
+      resultDiv.innerHTML = output;
+      resultDiv.style.display = 'block';
+
+    }
 
     function get_suggestions() {
       let query = profileQuery.value;
-      // console.log(query);
+      console.log("You queried: ", query);
 
       // Wait until user types 3 characters, then provide suggestions
       if (query.length < 3) {
-        // query.style.display = 'none';
+        resultDiv.style.display = 'none';
         return;
       }
 
@@ -68,6 +90,7 @@
       })
       .then(function(data){
         console.log(data);
+        show_suggestions(data);
       })
     }
 
