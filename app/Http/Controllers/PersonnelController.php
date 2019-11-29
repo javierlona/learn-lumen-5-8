@@ -26,12 +26,13 @@ class PersonnelController extends Controller
       return view('profile.index', $person);
     }
 
-    public function update(Request $request, Personnel $person)
+    public function update(Request $request, $id)
     {
-      // dd($person);
-      echo "HELLO";
+      $person = Personnel::where('id', $id)->firstOrFail();
       $person->fill($request->input());
       $person->save();
+
+      return redirect('/directory');
     }
 
     public function delete($id)
