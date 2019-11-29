@@ -89,7 +89,7 @@ class PersonnelController extends Controller
       ]);
 
       if ($validator->fails()) {
-        return response()->json('Failed', 200);
+        return response()->json(['errors' => 'Failed Validation'], 200);
       }
 
       $data = Personnel::where('name_first', 'like', '%' . $q . '%')

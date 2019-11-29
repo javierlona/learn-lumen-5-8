@@ -10,7 +10,6 @@
     <input type="text" class="form-control" name="search" id="searchPerson" aria-describedby="searchHelp">
     <small id="searchHelp" class="form-text text-muted">Search by name or email</small>
     <div class="list-group" id="suggestions">
-      {{-- <a href="#" class="list-group-item list-group-item-action list-group-item-info">A simple info list group item</a> --}}
     </div>
   </div>
   <a class="btn btn-primary mt-3" href="{{ route('profile.add') }}" role="button">Add Person</a>
@@ -48,25 +47,17 @@
 @endsection('content')
 @section('js_assets')
   <script>
-    console.log("Hello From Index.blade.php");
     const profileQuery = document.querySelector('#searchPerson');
     const resultDiv = document.querySelector('#suggestions');
-    console.log(profileQuery);
-    console.log(resultDiv);
 
     function show_suggestions(suggestions) {
-      console.log("The suggestions");
-      console.log(suggestions);
       let output = '';
 
       for(key in suggestions) {
-        if(suggestions.hasOwnProperty(key)) {
-          // console.log(suggestions[key].name_first);
-          
-          output += `<a href="#" class="list-group-item list-group-item-action list-group-item-info">${suggestions[key].name_first}</a>`;
+        if(suggestions.hasOwnProperty(key)) {          
+          output += `<a href="/mvc-sandbox/lumen/learn_lumen_5_8/public/profile/${suggestions[key].id}" class="list-group-item list-group-item-action list-group-item-info">${suggestions[key].name_last}, ${suggestions[key].name_first}</a>`;
         }
       }
-      console.log(output);
       resultDiv.innerHTML = output;
       resultDiv.style.display = 'block';
 
@@ -74,7 +65,6 @@
 
     function get_suggestions() {
       let query = profileQuery.value;
-      console.log("You queried: ", query);
 
       // Wait until user types 3 characters, then provide suggestions
       if (query.length < 3) {
@@ -90,8 +80,15 @@
       })
       .then(function(data){
         console.log(data);
-        show_suggestions(data);
+        if(data.hasOwnProperty('errors') && Object.keys(data.errors).length >= 1) {
+          console.log("You have errors.");
+        } else {
+          show_suggestions(data);
+        }
       })
+      .catch(function(error) {
+        console.log('ERROR:', error);
+  })
     }
 
     // Use "input" (every key), not "change" (must lose focus)
