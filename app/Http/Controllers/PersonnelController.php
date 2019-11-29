@@ -34,9 +34,11 @@ class PersonnelController extends Controller
       $person->save();
     }
 
-    public function delete(Request $request)
+    public function delete($id)
     {
-      echo "Delete function";
+      $person = Personnel::where('id', $id)->firstOrFail();
+      $person->delete();
+      return redirect('/directory');
     }
 
     public function store(Request $request)
