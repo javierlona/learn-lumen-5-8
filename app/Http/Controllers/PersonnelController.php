@@ -34,6 +34,11 @@ class PersonnelController extends Controller
       $person->save();
     }
 
+    public function delete(Request $request)
+    {
+      echo "Delete function";
+    }
+
     public function store(Request $request)
     {
       $rules = [

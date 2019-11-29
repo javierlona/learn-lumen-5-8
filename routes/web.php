@@ -38,6 +38,9 @@ $router->post('/profile/add', [
 $router->get('/profile/{id}', [
     'as' => 'profile.index', 'uses' => 'PersonnelController@show'
 ]);
+$router->post('/profile/delete/{id}', [
+    'as' => 'profile.delete', 'uses' => 'PersonnelController@delete'
+]);
 $router->post('/profile/{id}', [
     'as' => 'profile.update', 'uses' => 'PersonnelController@update'
 ]);
