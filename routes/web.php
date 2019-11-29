@@ -44,3 +44,6 @@ $router->post('/profile/delete/{id}', [
 $router->post('/profile/{id}', [
     'as' => 'profile.update', 'uses' => 'PersonnelController@update'
 ]);
+$router->get('/profile/search/{q}', [
+    'as' => 'profile.search', 'uses' => 'PersonnelController@search'
+]);

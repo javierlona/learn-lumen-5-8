@@ -80,4 +80,9 @@ class PersonnelController extends Controller
       */
       return redirect('/directory');
     }
+
+    public function search()
+    {
+      
+    }
 }

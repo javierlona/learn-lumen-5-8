@@ -7,7 +7,7 @@
 @section('content')
   <div class="form-group">
     <label for="searchPerson">Search For Person</label>
-    <input type="text" class="form-control" id="searchPerson" aria-describedby="searchHelp">
+    <input type="text" class="form-control" name="search" id="searchPerson" aria-describedby="searchHelp">
     <small id="searchHelp" class="form-text text-muted">Search by name or email</small>
   </div>
   <a class="btn btn-primary mt-3" href="{{ route('profile.add') }}" role="button">Add Person</a>
@@ -43,3 +43,35 @@
     </tbody>
   </table>
 @endsection('content')
+@section('js_assets')
+  <script>
+    console.log("Hello From Index.blade.php");
+    const profileQuery = document.querySelector('#searchPerson');
+    const resultDiv = document.querySelector('#suggestions');
+    console.log(profileQuery);
+    
+    function get_suggestions() {
+      let query = profileQuery.value;
+      console.log(query);
+
+      // Wait until user types 3 characters, then provide suggestions
+      if (query.length < 3) {
+        // query.style.display = 'none';
+        return;
+      }
+
+      let url = `/profile/search/${query}`;
+      console.log(url);
+      fetch(url)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data){
+        console.log(data);
+      })
+    }
+
+    // Use "input" (every key), not "change" (must lose focus)
+    profileQuery.addEventListener("keyup", get_suggestions, false)
+  </script>
+@endsection('js_assets')
