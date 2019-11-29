@@ -49,10 +49,10 @@
     const profileQuery = document.querySelector('#searchPerson');
     const resultDiv = document.querySelector('#suggestions');
     console.log(profileQuery);
-    
+
     function get_suggestions() {
       let query = profileQuery.value;
-      console.log(query);
+      // console.log(query);
 
       // Wait until user types 3 characters, then provide suggestions
       if (query.length < 3) {
@@ -60,7 +60,7 @@
         return;
       }
 
-      let url = `/profile/search/${query}`;
+      let url = `${window.location.pathname}/search/${query}`;
       console.log(url);
       fetch(url)
       .then(function(response) {

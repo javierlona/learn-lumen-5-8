@@ -81,8 +81,8 @@ class PersonnelController extends Controller
       return redirect('/directory');
     }
 
-    public function search()
+    public function search($q)
     {
-      
+      return response()->json($q, 200);
     }
 }
